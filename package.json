@@ -1,0 +1,16 @@
+{
+  "name": "entria",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "main": "index.js",
+  "repository": "https://github.com/GLuchtenberg/beer-stock.git",
+  "author": "Gabriel <gabriel_luchtenberg@edu.univali.br>",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn workspace @entria/backend start", 
+    "build-schema": "yarn workspace @entria/backend build"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "name": "graphql-dataloader-boilerplate-ts",
+  "name": "@entria/backend",
   "description": "GraphQL DataLoader boilerplate with TypeScript",
   "version": "0.0.1",
   "dependencies": {
