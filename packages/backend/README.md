@@ -1,3 +1,7 @@
+# Run docker
+
+docker run -d -p 27017:27017 -p 28017:28017 -e MONGODB_USER="gabriel" -e MONGODB_DATABASE="beerstock" -e MONGODB_PASS="123456" tutum/mongodb 
+
 # GraphQL DataLoader Boilerplate
 
 [![CircleCI](https://circleci.com/gh/entria/graphql-dataloader-boilerplate-ts/tree/master.svg?style=svg)](https://circleci.com/gh/entria/graphql-dataloader-boilerplate-ts/tree/master)
