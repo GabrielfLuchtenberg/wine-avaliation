@@ -5,8 +5,10 @@ import { connectionArgs, fromGlobalId } from 'graphql-relay'
 
 import UserType from '../modules/user/UserType'
 import { nodeField } from '../interface/NodeInterface'
-import { UserLoader } from '../loader'
+import { UserLoader, BeerLoader } from '../loader'
 import UserConnection from '../modules/user/UserConnection'
+import BeerConnection from '../modules/beer/BeerConnection';
+import BeerType from '../modules/beer/BeerType';
 
 export default new GraphQLObjectType({
   name: 'Query',
@@ -38,6 +40,28 @@ export default new GraphQLObjectType({
         },
       },
       resolve: (obj, args, context) => UserLoader.loadUsers(context, args),
+    },
+    beer: {
+      type: BeerType,
+      args:{
+        id:{
+          type: new GraphQLNonNull(GraphQLID),
+        },
+      },
+      resolve: (obj,args,context) => {
+        const { id } = fromGlobalId(args.id)
+        return BeerLoader.load(context, id)
+      }
+    },
+    beers: {
+      type: BeerConnection.connectionType,
+      args: {
+        ...connectionArgs,
+        search: {
+          type: GraphQLString,
+        },
+      },
+      resolve: (obj, args, context) => BeerLoader.loadBeers(context, args),
     },
   }),
 })

@@ -24,7 +24,7 @@ app.keys = jwtSecret;
 
 const graphqlSettingsPerReq = async req => {
   const { user } = await getUser(req.header.authorization);
-
+  
   const dataloaders = Object.keys(loaders).reduce(
     (dataloaders, loaderKey) => ({
       ...dataloaders,
