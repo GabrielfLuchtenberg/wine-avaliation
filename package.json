@@ -10,7 +10,8 @@
   "author": "Gabriel <gabriel_luchtenberg@edu.univali.br>",
   "license": "MIT",
   "scripts": {
-    "start": "yarn workspace @entria/backend start", 
-    "build-schema": "yarn workspace @entria/backend build"
+    "start": "yarn workspace @entria/backend start",
+    "build-schema": "yarn workspace @entria/backend build",
+    "update-schema": "yarn workspace @entria/backend update-schema"
   }
 }

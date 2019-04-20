@@ -4,13 +4,12 @@ import { Beer as BeerModel } from '../../model/index'
 import { connectionFromMongoCursor, mongooseLoader } from '@entria/graphql-mongoose-loader'
 
 export default class Beer {
-  constructor (data, { user }) {
-    // const { this } = ...data
+  constructor(data, { user }) {
     this.id = data.id
     this._id = data._id
     this.name = data.name
     this.brand = data.brand
-    this.quantity = data.brand
+    this.quantity = data.quantity
     this.mainIngredients = data.mainIngredients
     this.note = data.note;
     // you can only see your own email, and your active status
