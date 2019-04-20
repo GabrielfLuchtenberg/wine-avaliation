@@ -1,4 +1,4 @@
 import * as UserLoader from '../modules/user/UserLoader'
-import * as BeerLoader from '../modules/beer/BeerLoader'
+import * as WineLoader from '../modules/wine/WineLoader'
 
-export { UserLoader, BeerLoader }
+export { UserLoader, WineLoader }

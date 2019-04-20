@@ -5,33 +5,33 @@ import { globalIdField } from 'graphql-relay'
 import { registerType, nodeInterface } from '../../interface/NodeInterface'
 export default registerType(
   new GraphQLObjectType({
-    name: 'Beer',
-    description: 'Beer data',
+    name: 'Wine',
+    description: 'Wine data',
     fields: () => ({
-      id: globalIdField('Beer'),
+      id: globalIdField('Wine'),
       _id: {
         type: GraphQLString,
-        resolve: beer => beer._id,
+        resolve: wine => wine._id,
       },
       name: {
         type: GraphQLString,
-        resolve: beer => beer.name,
+        resolve: wine => wine.name,
       },
       brand: {
         type: GraphQLString,
-        resolve: beer => beer.brand,
+        resolve: wine => wine.brand,
       },
       quantity: {
         type: GraphQLInt,
-        resolve: beer => beer.quantity,
+        resolve: wine => wine.quantity,
       },
       mainIngredients: {
         type: GraphQLString,
-        resolve: beer => beer.mainIngredients,
+        resolve: wine => wine.mainIngredients,
       },
       note: {
         type: GraphQLString,
-        resolve: beer => beer.note,
+        resolve: wine => wine.note,
       },
     }),
     interfaces: () => [nodeInterface],

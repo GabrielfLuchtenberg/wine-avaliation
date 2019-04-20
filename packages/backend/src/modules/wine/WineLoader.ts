@@ -1,9 +1,9 @@
 //
 import DataLoader from 'dataloader'
-import { Beer as BeerModel } from '../../model/index'
+import { Wine as WineModel } from '../../model/index'
 import { connectionFromMongoCursor, mongooseLoader } from '@entria/graphql-mongoose-loader'
 
-export default class Beer {
+export default class Wine {
   constructor(data, { user }) {
     this.id = data.id
     this._id = data._id
@@ -12,16 +12,12 @@ export default class Beer {
     this.quantity = data.quantity
     this.mainIngredients = data.mainIngredients
     this.note = data.note;
-    // you can only see your own email, and your active status
-    // if (beer && beer._id.equals(data._id)) {
-    //   this.email = data.email
-    //   this.active = data.active
-    // }
+
   }
 }
 
 export const getLoader = () => {
-  return new DataLoader(ids => mongooseLoader(BeerModel, ids));
+  return new DataLoader(ids => mongooseLoader(WineModel, ids));
 }
 
 const viewerCanSee = (context, data) => {
@@ -36,23 +32,23 @@ export const load = async (context, id) => {
 
   let data
   try {
-    data = await context.dataloaders.BeerLoader.load(id)
+    data = await context.dataloaders.WineLoader.load(id)
   } catch (err) {
     return null
   }
-  return viewerCanSee(context, data) ? new Beer(data, context) : null
+  return viewerCanSee(context, data) ? new Wine(data, context) : null
 }
 
 export const clearCache = ({ dataloaders }, id) => {
-  return dataloaders.BeerLoader.clear(id.toString())
+  return dataloaders.WineLoader.clear(id.toString())
 }
 
-export const loadBeers = async (context, args) => {
+export const loadWines = async (context, args) => {
   const where = args.search ? { name: { $regex: new RegExp(`^${args.search}`, 'ig') } } : {}
-  const beers = BeerModel.find(where, { _id: 1 }).sort({ createdAt: -1 })
+  const wines = WineModel.find(where, { _id: 1 }).sort({ createdAt: -1 })
 
   return connectionFromMongoCursor({
-    cursor: beers,
+    cursor: wines,
     context,
     args,
     loader: load,

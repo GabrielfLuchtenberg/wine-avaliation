@@ -5,10 +5,10 @@ import { connectionArgs, fromGlobalId } from 'graphql-relay'
 
 import UserType from '../modules/user/UserType'
 import { nodeField } from '../interface/NodeInterface'
-import { UserLoader, BeerLoader } from '../loader'
+import { UserLoader, WineLoader } from '../loader'
 import UserConnection from '../modules/user/UserConnection'
-import BeerConnection from '../modules/beer/BeerConnection';
-import BeerType from '../modules/beer/BeerType';
+import WineConnection from '../modules/wine/WineConnection';
+import WineType from '../modules/wine/WineType';
 
 export default new GraphQLObjectType({
   name: 'Query',
@@ -41,27 +41,27 @@ export default new GraphQLObjectType({
       },
       resolve: (obj, args, context) => UserLoader.loadUsers(context, args),
     },
-    beer: {
-      type: BeerType,
-      args:{
-        id:{
+    wine: {
+      type: WineType,
+      args: {
+        id: {
           type: new GraphQLNonNull(GraphQLID),
         },
       },
-      resolve: (obj,args,context) => {
+      resolve: (obj, args, context) => {
         const { id } = fromGlobalId(args.id)
-        return BeerLoader.load(context, id)
+        return WineLoader.load(context, id)
       }
     },
-    beers: {
-      type: BeerConnection.connectionType,
+    wines: {
+      type: WineConnection.connectionType,
       args: {
         ...connectionArgs,
         search: {
           type: GraphQLString,
         },
       },
-      resolve: (obj, args, context) => BeerLoader.loadBeers(context, args),
+      resolve: (obj, args, context) => WineLoader.loadWines(context, args),
     },
   }),
 })

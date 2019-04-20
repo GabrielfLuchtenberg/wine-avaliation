@@ -16,8 +16,8 @@ const schema = new mongoose.Schema(
     mainIngredients: {
       type: String,
     },
-    note:{
-      type:String
+    note: {
+      type: String
     }
   },
   {
@@ -25,11 +25,11 @@ const schema = new mongoose.Schema(
       createdAt: 'createdAt',
       updatedAt: 'updatedAt',
     },
-    collection: 'beer',
+    collection: 'wine',
   },
 );
 
-export interface IBeer extends Document {
+export interface IWine extends Document {
   name: string;
   brand: string;
   quantity: Number;
@@ -38,6 +38,6 @@ export interface IBeer extends Document {
 }
 
 // this will make find, findOne typesafe
-const BeerModel: Model<IBeer> = mongoose.model('Beer', schema);
+const WineModel: Model<IWine> = mongoose.model('Wine', schema);
 
-export default BeerModel;
+export default WineModel;

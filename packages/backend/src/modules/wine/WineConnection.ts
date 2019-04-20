@@ -4,11 +4,11 @@ import { GraphQLInt } from 'graphql'
 
 import { connectionDefinitions } from 'graphql-relay'
 
-import BeerType from './BeerType'
+import WineType from './WineType'
 
 export default connectionDefinitions({
-  name: 'Beer',
-  nodeType: BeerType,
+  name: 'Wine',
+  nodeType: WineType,
   connectionFields: {
     count: {
       type: GraphQLInt,
