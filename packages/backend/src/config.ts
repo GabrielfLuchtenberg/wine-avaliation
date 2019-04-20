@@ -12,8 +12,7 @@ dotenvSafe.load({
 const ENV = process.env
 
 // Database Settings
-const dBdevelopment = ENV.MONGO_URL || 'mongodb://gabriel:123456@localhost/beerstock'
-// const dBdevelopment = ENV.MONGO_URL || 'mongodb://localhost/database'
+const dBdevelopment = ENV.MONGO_URL || 'mongodb://localhost/database'
 
 const dBproduction = ENV.MONGO_URL || 'mongodb://localhost/database'
 

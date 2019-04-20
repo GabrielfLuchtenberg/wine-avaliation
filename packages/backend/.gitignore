@@ -33,3 +33,5 @@ flow-coverage
 .reify-cache/
 
 test-results/
+
+.env
