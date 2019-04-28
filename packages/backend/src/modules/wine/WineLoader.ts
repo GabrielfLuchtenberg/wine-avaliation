@@ -9,10 +9,10 @@ export default class Wine {
     this._id = data._id
     this.name = data.name
     this.brand = data.brand
-    this.quantity = data.quantity
-    this.mainIngredients = data.mainIngredients
+    this.classification = data.classification
+    this.color = data.color
+    this.sugarTeor = data.sugarTeor
     this.note = data.note;
-
   }
 }
 
@@ -21,7 +21,6 @@ export const getLoader = () => {
 }
 
 const viewerCanSee = (context, data) => {
-  // Anyone can see another user
   return true
 }
 

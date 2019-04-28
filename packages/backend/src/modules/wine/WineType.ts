@@ -21,13 +21,17 @@ export default registerType(
         type: GraphQLString,
         resolve: wine => wine.brand,
       },
-      quantity: {
-        type: GraphQLInt,
-        resolve: wine => wine.quantity,
-      },
-      mainIngredients: {
+      classification: {
         type: GraphQLString,
-        resolve: wine => wine.mainIngredients,
+        resolve: wine => wine.classification,
+      },
+      color: {
+        type: GraphQLString,
+        resolve: wine => wine.color,
+      },
+      sugarTeor: {
+        type: GraphQLString,
+        resolve: wine => wine.sugarTeor,
       },
       note: {
         type: GraphQLString,

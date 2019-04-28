@@ -12,19 +12,22 @@ export default mutationWithClientMutationId({
     brand: {
       type: GraphQLString,
     },
-    quantity: {
-      type: new GraphQLNonNull(GraphQLInt),
+    classification: {
+      type: GraphQLString,
     },
-    mainIngredients: {
+    color: {
+      type: GraphQLString,
+    },
+    sugarTeor: {
       type: GraphQLString,
     },
     note: {
       type: GraphQLString,
     },
   },
-  mutateAndGetPayload: async ({ name, brand, quantity, mainIngredients, note }) => {
+  mutateAndGetPayload: async ({ name, brand, classification, color, sugarTeor, note }) => {
 
-    const wine = new Wine({ name, brand, quantity, mainIngredients, note })
+    const wine = new Wine({ name, brand, classification, color, sugarTeor, note })
     await wine.save()
     return {
       wine,

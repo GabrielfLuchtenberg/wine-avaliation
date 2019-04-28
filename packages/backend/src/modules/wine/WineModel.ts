@@ -9,11 +9,13 @@ const schema = new mongoose.Schema(
     brand: {
       type: String,
     },
-    quantity: {
-      type: Number,
-      required: true,
+    classification: {
+      type: String,
     },
-    mainIngredients: {
+    color: {
+      type: String,
+    },
+    sugarTeor: {
       type: String,
     },
     note: {
@@ -32,12 +34,12 @@ const schema = new mongoose.Schema(
 export interface IWine extends Document {
   name: string;
   brand: string;
-  quantity: Number;
-  mainIngredients: string;
+  classification: string;
+  color: string;
+  sugarTeor: string;
   note: string;
 }
 
-// this will make find, findOne typesafe
 const WineModel: Model<IWine> = mongoose.model('Wine', schema);
 
 export default WineModel;

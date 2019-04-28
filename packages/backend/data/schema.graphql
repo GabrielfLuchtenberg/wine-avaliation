@@ -1,8 +1,9 @@
 input AddWineInput {
   name: String!
   brand: String
-  quantity: Int!
-  mainIngredients: String
+  classification: String
+  color: String
+  sugarTeor: String
   note: String
   clientMutationId: String
 }
@@ -138,8 +139,9 @@ type Wine implements Node {
   _id: String
   name: String
   brand: String
-  quantity: Int
-  mainIngredients: String
+  classification: String
+  color: String
+  sugarTeor: String
   note: String
 }
 
