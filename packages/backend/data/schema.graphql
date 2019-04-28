@@ -1,47 +1,17 @@
-input AddBeerInput {
+input AddWineInput {
   name: String!
   brand: String
-  quantity: Int!
-  mainIngredients: String
+  classification: String
+  color: String
+  sugarTeor: String
   note: String
   clientMutationId: String
 }
 
-type AddBeerPayload {
-  beer: Beer
+type AddWinePayload {
+  wine: Wine
   error: String
   clientMutationId: String
-}
-
-"""Beer data"""
-type Beer implements Node {
-  """The ID of an object"""
-  id: ID!
-  _id: String
-  name: String
-  brand: String
-  quantity: Int
-  mainIngredients: String
-  note: String
-}
-
-"""A connection to a list of items."""
-type BeerConnection {
-  """Information to aid in pagination."""
-  pageInfo: PageInfo!
-
-  """A list of edges."""
-  edges: [BeerEdge]
-  count: Int
-}
-
-"""An edge in a connection."""
-type BeerEdge {
-  """The item at the end of the edge"""
-  node: Beer
-
-  """A cursor for use in pagination"""
-  cursor: String!
 }
 
 input ChangePasswordInput {
@@ -71,7 +41,7 @@ type LoginEmailPayload {
 }
 
 type Mutation {
-  AddBeer(input: AddBeerInput!): AddBeerPayload
+  AddWine(input: AddWineInput!): AddWinePayload
   LoginEmail(input: LoginEmailInput!): LoginEmailPayload
   RegisterEmail(input: RegisterEmailInput!): RegisterEmailPayload
   ChangePassword(input: ChangePasswordInput!): ChangePasswordPayload
@@ -108,8 +78,8 @@ type Query {
   me: User
   user(id: ID!): User
   users(after: String, first: Int, before: String, last: Int, search: String): UserConnection
-  beer(id: ID!): Beer
-  beers(after: String, first: Int, before: String, last: Int, search: String): BeerConnection
+  wine(id: ID!): Wine
+  wines(after: String, first: Int, before: String, last: Int, search: String): WineConnection
 }
 
 input RegisterEmailInput {
@@ -157,6 +127,38 @@ type UserConnection {
 type UserEdge {
   """The item at the end of the edge"""
   node: User
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""Wine data"""
+type Wine implements Node {
+  """The ID of an object"""
+  id: ID!
+  _id: String
+  name: String
+  brand: String
+  classification: String
+  color: String
+  sugarTeor: String
+  note: String
+}
+
+"""A connection to a list of items."""
+type WineConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [WineEdge]
+  count: Int
+}
+
+"""An edge in a connection."""
+type WineEdge {
+  """The item at the end of the edge"""
+  node: Wine
 
   """A cursor for use in pagination"""
   cursor: String!

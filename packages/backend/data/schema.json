@@ -146,7 +146,7 @@
               "deprecationReason": null
             },
             {
-              "name": "beer",
+              "name": "wine",
               "description": null,
               "args": [
                 {
@@ -166,14 +166,14 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "Beer",
+                "name": "Wine",
                 "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "beers",
+              "name": "wines",
               "description": null,
               "args": [
                 {
@@ -229,7 +229,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "BeerConnection",
+                "name": "WineConnection",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -284,7 +284,7 @@
             },
             {
               "kind": "OBJECT",
-              "name": "Beer",
+              "name": "Wine",
               "ofType": null
             }
           ]
@@ -563,8 +563,8 @@
         },
         {
           "kind": "OBJECT",
-          "name": "Beer",
-          "description": "Beer data",
+          "name": "Wine",
+          "description": "Wine data",
           "fields": [
             {
               "name": "id",
@@ -619,19 +619,31 @@
               "deprecationReason": null
             },
             {
-              "name": "quantity",
+              "name": "classification",
               "description": null,
               "args": [],
               "type": {
                 "kind": "SCALAR",
-                "name": "Int",
+                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "mainIngredients",
+              "name": "color",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "sugarTeor",
               "description": null,
               "args": [],
               "type": {
@@ -668,7 +680,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "BeerConnection",
+          "name": "WineConnection",
           "description": "A connection to a list of items.",
           "fields": [
             {
@@ -696,7 +708,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "BeerEdge",
+                  "name": "WineEdge",
                   "ofType": null
                 }
               },
@@ -723,7 +735,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "BeerEdge",
+          "name": "WineEdge",
           "description": "An edge in a connection.",
           "fields": [
             {
@@ -732,7 +744,7 @@
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "Beer",
+                "name": "Wine",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -766,7 +778,7 @@
           "description": null,
           "fields": [
             {
-              "name": "AddBeer",
+              "name": "AddWine",
               "description": null,
               "args": [
                 {
@@ -777,7 +789,7 @@
                     "name": null,
                     "ofType": {
                       "kind": "INPUT_OBJECT",
-                      "name": "AddBeerInput",
+                      "name": "AddWineInput",
                       "ofType": null
                     }
                   },
@@ -786,7 +798,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "AddBeerPayload",
+                "name": "AddWinePayload",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -881,7 +893,7 @@
         },
         {
           "kind": "INPUT_OBJECT",
-          "name": "AddBeerInput",
+          "name": "AddWineInput",
           "description": null,
           "fields": null,
           "inputFields": [
@@ -910,21 +922,27 @@
               "defaultValue": null
             },
             {
-              "name": "quantity",
+              "name": "classification",
               "description": null,
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "defaultValue": null
             },
             {
-              "name": "mainIngredients",
+              "name": "color",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "sugarTeor",
               "description": null,
               "type": {
                 "kind": "SCALAR",
@@ -960,16 +978,16 @@
         },
         {
           "kind": "OBJECT",
-          "name": "AddBeerPayload",
+          "name": "AddWinePayload",
           "description": null,
           "fields": [
             {
-              "name": "beer",
+              "name": "wine",
               "description": null,
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "Beer",
+                "name": "Wine",
                 "ofType": null
               },
               "isDeprecated": false,
