@@ -1,21 +1,21 @@
 //
-import '@babel/polyfill';
-import { createServer } from 'http';
-import app from './app';
-import { connectDatabase } from './database';
-import { graphqlPort } from './config';
+import "@babel/polyfill";
+import { createServer } from "http";
+import app from "./app";
+import { connectDatabase } from "./database";
+import { graphqlPort } from "./config";
 
-import { SubscriptionServer } from 'subscriptions-transport-ws';
-import { execute, subscribe } from 'graphql';
+import { SubscriptionServer } from "subscriptions-transport-ws";
+import { execute, subscribe } from "graphql";
 
-import { schema } from './schema';
+import { schema } from "./schema";
 
 (async () => {
   try {
     const info = await connectDatabase();
     console.log(`Connected to ${info.host}:${info.port}/${info.name}`);
   } catch (error) {
-    console.error('Unable to connect to database');
+    console.error("Unable to connect to database");
     process.exit(1);
   }
 
@@ -25,16 +25,17 @@ import { schema } from './schema';
     console.log(`GraphQL Server now listening at :${graphqlPort}`);
     SubscriptionServer.create(
       {
-        onConnect: connectionParams => console.log('client subscription connected!', connectionParams),
-        onDisconnect: () => console.log('client subscription disconnected!'),
+        onConnect: connectionParams =>
+          console.log("client subscription connected!", connectionParams),
+        onDisconnect: () => console.log("client subscription disconnected!"),
         execute,
         subscribe,
-        schema,
+        schema
       },
       {
         server,
-        path: '/subscriptions',
-      },
+        path: "/subscriptions"
+      }
     );
   });
 

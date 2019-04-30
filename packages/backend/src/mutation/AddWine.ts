@@ -1,47 +1,60 @@
-import { GraphQLString, GraphQLNonNull, GraphQLInt } from 'graphql'
-import { mutationWithClientMutationId } from 'graphql-relay'
-import { Wine } from '../model'
-import WineType from '../modules/wine/WineType';
+import { GraphQLString, GraphQLNonNull, GraphQLInt } from "graphql";
+import { mutationWithClientMutationId } from "graphql-relay";
+import { Wine } from "../model";
+import WineType from "../modules/wine/WineType";
 
 export default mutationWithClientMutationId({
-  name: 'AddWine',
+  name: "AddWine",
   inputFields: {
     name: {
-      type: new GraphQLNonNull(GraphQLString),
+      type: new GraphQLNonNull(GraphQLString)
     },
     brand: {
-      type: GraphQLString,
+      type: GraphQLString
     },
     classification: {
-      type: GraphQLString,
+      type: GraphQLString
     },
     color: {
-      type: GraphQLString,
+      type: GraphQLString
     },
     sugarTeor: {
-      type: GraphQLString,
+      type: GraphQLString
     },
     note: {
-      type: GraphQLString,
-    },
+      type: GraphQLString
+    }
   },
-  mutateAndGetPayload: async ({ name, brand, classification, color, sugarTeor, note }) => {
-
-    const wine = new Wine({ name, brand, classification, color, sugarTeor, note })
-    await wine.save()
+  mutateAndGetPayload: async ({
+    name,
+    brand,
+    classification,
+    color,
+    sugarTeor,
+    note
+  }) => {
+    const wine = new Wine({
+      name,
+      brand,
+      classification,
+      color,
+      sugarTeor,
+      note
+    });
+    await wine.save();
     return {
       wine,
-      error: null,
-    }
+      error: null
+    };
   },
   outputFields: {
     wine: {
       type: WineType,
-      resolve: ({ wine }) => wine,
+      resolve: ({ wine }) => wine
     },
     error: {
       type: GraphQLString,
-      resolve: ({ error }) => error,
-    },
-  },
-})
+      resolve: ({ error }) => error
+    }
+  }
+});

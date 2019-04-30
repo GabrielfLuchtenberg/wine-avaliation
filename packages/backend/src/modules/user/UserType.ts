@@ -1,32 +1,32 @@
 //
 
-import { GraphQLObjectType, GraphQLString, GraphQLBoolean } from 'graphql'
-import { globalIdField } from 'graphql-relay'
-import { registerType, nodeInterface } from '../../interface/NodeInterface'
+import { GraphQLObjectType, GraphQLString, GraphQLBoolean } from "graphql";
+import { globalIdField } from "graphql-relay";
+import { registerType, nodeInterface } from "../../interface/NodeInterface";
 
 export default registerType(
   new GraphQLObjectType({
-    name: 'User',
-    description: 'User data',
+    name: "User",
+    description: "User data",
     fields: () => ({
-      id: globalIdField('User'),
+      id: globalIdField("User"),
       _id: {
         type: GraphQLString,
-        resolve: user => user._id,
+        resolve: user => user._id
       },
       name: {
         type: GraphQLString,
-        resolve: user => user.name,
+        resolve: user => user.name
       },
       email: {
         type: GraphQLString,
-        resolve: user => user.email,
+        resolve: user => user.email
       },
       active: {
         type: GraphQLBoolean,
-        resolve: user => user.active,
-      },
+        resolve: user => user.active
+      }
     }),
-    interfaces: () => [nodeInterface],
-  }),
-)
+    interfaces: () => [nodeInterface]
+  })
+);

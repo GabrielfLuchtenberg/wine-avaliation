@@ -1,22 +1,22 @@
-import mongoose, { Document, Model } from 'mongoose';
+import mongoose, { Document, Model } from "mongoose";
 
 const schema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: true
     },
     brand: {
-      type: String,
+      type: String
     },
     classification: {
-      type: String,
+      type: String
     },
     color: {
-      type: String,
+      type: String
     },
     sugarTeor: {
-      type: String,
+      type: String
     },
     note: {
       type: String
@@ -24,11 +24,11 @@ const schema = new mongoose.Schema(
   },
   {
     timestamps: {
-      createdAt: 'createdAt',
-      updatedAt: 'updatedAt',
+      createdAt: "createdAt",
+      updatedAt: "updatedAt"
     },
-    collection: 'wine',
-  },
+    collection: "wine"
+  }
 );
 
 export interface IWine extends Document {
@@ -40,6 +40,6 @@ export interface IWine extends Document {
   note: string;
 }
 
-const WineModel: Model<IWine> = mongoose.model('Wine', schema);
+const WineModel: Model<IWine> = mongoose.model("Wine", schema);
 
 export default WineModel;
