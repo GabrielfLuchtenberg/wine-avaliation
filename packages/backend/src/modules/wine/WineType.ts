@@ -1,43 +1,43 @@
 //
 
-import { GraphQLObjectType, GraphQLString, GraphQLInt } from 'graphql'
-import { globalIdField } from 'graphql-relay'
-import { registerType, nodeInterface } from '../../interface/NodeInterface'
+import { GraphQLObjectType, GraphQLString, GraphQLInt } from "graphql";
+import { globalIdField } from "graphql-relay";
+import { registerType, nodeInterface } from "../../interface/NodeInterface";
 export default registerType(
   new GraphQLObjectType({
-    name: 'Wine',
-    description: 'Wine data',
+    name: "Wine",
+    description: "Wine data",
     fields: () => ({
-      id: globalIdField('Wine'),
+      id: globalIdField("Wine"),
       _id: {
         type: GraphQLString,
-        resolve: wine => wine._id,
+        resolve: wine => wine._id
       },
       name: {
         type: GraphQLString,
-        resolve: wine => wine.name,
+        resolve: wine => wine.name
       },
       brand: {
         type: GraphQLString,
-        resolve: wine => wine.brand,
+        resolve: wine => wine.brand
       },
       classification: {
         type: GraphQLString,
-        resolve: wine => wine.classification,
+        resolve: wine => wine.classification
       },
       color: {
         type: GraphQLString,
-        resolve: wine => wine.color,
+        resolve: wine => wine.color
       },
       sugarTeor: {
         type: GraphQLString,
-        resolve: wine => wine.sugarTeor,
+        resolve: wine => wine.sugarTeor
       },
       note: {
         type: GraphQLString,
-        resolve: wine => wine.note,
-      },
+        resolve: wine => wine.note
+      }
     }),
-    interfaces: () => [nodeInterface],
-  }),
-)
+    interfaces: () => [nodeInterface]
+  })
+);

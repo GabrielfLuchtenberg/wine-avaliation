@@ -1,33 +1,33 @@
-import mongoose, { Document, Model } from 'mongoose';
-import bcrypt from 'bcryptjs';
+import mongoose, { Document, Model } from "mongoose";
+import bcrypt from "bcryptjs";
 
 const schema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: true
     },
     password: {
       type: String,
-      hidden: true,
+      hidden: true
     },
     email: {
       type: String,
       required: false,
-      index: true,
+      index: true
     },
     active: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
   {
     timestamps: {
-      createdAt: 'createdAt',
-      updatedAt: 'updatedAt',
+      createdAt: "createdAt",
+      updatedAt: "updatedAt"
     },
-    collection: 'user',
-  },
+    collection: "user"
+  }
 );
 
 export interface IUser extends Document {
@@ -39,9 +39,9 @@ export interface IUser extends Document {
   encryptPassword: (password: string | undefined) => string;
 }
 
-schema.pre<IUser>('save', function encryptPasswordHook(next) {
+schema.pre<IUser>("save", function encryptPasswordHook(next) {
   // Hash the password
-  if (this.isModified('password')) {
+  if (this.isModified("password")) {
     this.password = this.encryptPassword(this.password);
   }
 
@@ -54,10 +54,10 @@ schema.methods = {
   },
   encryptPassword(password: string) {
     return bcrypt.hashSync(password, 8);
-  },
+  }
 };
 
 // this will make find, findOne typesafe
-const UserModel: Model<IUser> = mongoose.model('User', schema);
+const UserModel: Model<IUser> = mongoose.model("User", schema);
 
 export default UserModel;
